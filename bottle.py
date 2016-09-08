@@ -905,6 +905,7 @@ class Bottle(object):
         plugins = makelist(apply)
         skiplist = makelist(skip)
 
+        @functools.wraps(callback)
         def decorator(callback):
             if isinstance(callback, basestring): callback = load(callback)
             for rule in makelist(path) or yieldroutes(callback):
